@@ -219,10 +219,7 @@ def handle_history(message):
                 amount = result.amount
                 if (result.action == "send") and amount:
                     amount = from_raw(int(result.amount))
-                    if (
-                        result.notes == "sent to registered redditor"
-                        or result.notes == "new user created"
-                    ):
+                    if result.notes == "sent to user":
                         response += (
                             "%s: %s | %s Banano to %s | reddit object: %s | %s\n\n"
                             % (
@@ -234,10 +231,7 @@ def handle_history(message):
                                 result.notes,
                             )
                         )
-                    elif (
-                        result.notes == "sent to registered address"
-                        or result.notes == "sent to unregistered address"
-                    ):
+                    elif result.notes == "sent to address":
                         response += (
                             "%s: %s | %s Banano to %s | reddit object: %s | %s\n\n"
                             % (
