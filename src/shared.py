@@ -88,21 +88,11 @@ class RandomUtil(object):
 
 class NumberUtil(object):
     @classmethod
-    def truncate_digits(cls, in_number: float, max_digits: int) -> float:
-        """Restrict maximum decimal digits by removing them"""
-        getcontext().prec = max_digits
-        working_num = int(Decimal(str(in_number)) * Decimal(Decimal("10") ** Decimal(str(max_digits))))
-        return working_num / (10 ** max_digits)
-
-
-    @classmethod
     def format_float(cls, in_number: float) -> str:
         """Format a float with un-necessary chars removed. E.g: 1.0000 == 1"""
         if CURRENCY == "Nano":
-            in_number = cls.truncate_digits(in_number, 6)
             as_str = f"{in_number:.6f}".rstrip('0')
         else:
-            in_number = cls.truncate_digits(in_number, 2)
             as_str = f"{in_number:.2f}".rstrip('0')            
         if as_str[len(as_str) - 1] == '.':
             as_str = as_str.replace('.', '')
