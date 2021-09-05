@@ -14,7 +14,7 @@ Help from Banano Tipper! This bot handles tips via the [BANANO](https://banano.c
 or /r/banano_tipbot for more information on its use and its status. Be sure to read the 
 [Terms of Service](https://github.com/BananoCoin/banano_reddit_tipbot#terms-of-service)\n\n
 
-If you do not accept the Terms of Service, or do not with to participate, please respond with the text `opt-out`.\n\n
+If you do not accept the Terms of Service, or do not wish to participate, please respond with the text `opt-out`.\n\n
 
 Banano Tipper works in two ways -- either publicly tip a user on a subreddit, or send a PM to /u/banano_tipbot with a PM command below.\n\n
 To tip 0.1 Banano on a comment or post on a [tracked subreddit](https://www.reddit.com/r/banano_tipbot/comments/astwp6/banano_tipbot_status/), make a comment starting with:\n
@@ -147,6 +147,7 @@ SEND_TEXT = {
         "make an account."
     ),
     110: "You must specify an amount and a user, e.g. `send 1 banano_tipbot`.",
+    111: "Too many arguments specified.",
     120: "I could not read the amount. Is '%s' a number?",
     130: "Program minimum is %s Banano.",
     150: "Your tip is below the minimum for an unfamiliar sub.",
@@ -258,7 +259,7 @@ def make_response_text(message, response):
             response["recipient"],
             response["hash"],
         )
-    if response["status"] in [100, 110, 150, 160, 190, 200]:
+    if response["status"] in [100, 110, 111, 150, 160, 190, 200]:
         return SEND_TEXT[response["status"]]
     if response["status"] == 120:
         return SEND_TEXT[response["status"]] % response["amount"]
