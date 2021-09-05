@@ -142,18 +142,12 @@ def allowed_request(username, seconds=30, num_requests=5):
     :param num_requests: int (number of allowed requests)
     :return:
     """
-    historyQ = History.select(History.sql_time).where(History.username == str(username)).order_by(History.id)
+    historyQ = History.select(History.sql_time).where(History.username == str(username)).order_by(History.id.desc()).limit(num_requests)
     history_list = [h for h in historyQ]
     if len(history_list) < num_requests:
         return True
     else:
-        i = 0
-        for h in history_list:
-            i+=1
-            if i == 5:
-                return (
-                    datetime.utcnow() - h.sql_time
-                ).total_seconds() > seconds
+        return (datetime.utcnow() - history_list[num_requests - 1].sql_time).total_seconds() > seconds
 
 
 def check_registered_by_address(address):
