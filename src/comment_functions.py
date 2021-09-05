@@ -59,6 +59,7 @@ def send_from_comment(message):
     Tip not sent
     100 - sender account does not exist
     110 - Amount and/or recipient not specified
+    111 - Too many arguments specified
     120 - could not parse send amount
     130 - below program minimum
     150 - below 1 nano for untracked sub

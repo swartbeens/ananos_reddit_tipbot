@@ -409,6 +409,12 @@ def handle_send(message):
         response["status"] = 110
         return response
 
+    # Check for too many arguments
+    if len(parsed_text) >= 4: 
+        update_history_notes(entry_id, "too many arguments")
+        response["status"] = 111
+        return response   
+
     # pull sender account info
     sender_info = tipper_functions.account_info(response["username"])
     if not sender_info:
