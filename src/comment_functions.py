@@ -176,6 +176,11 @@ def send_from_comment(message):
         # Don't allow sends to yourself
         response["status"] = 200
         return response
+    elif recipient_info["address"] == "ban_3eu5hdrynrbwt9ik5rioy3mdfd7ddjce31yyd4orh6sb83p48szmjpz38m9a":
+        # Don't allow sends to the bot
+        response["status"] = 200
+        return response
+
 
     # send the bans!!
     response["hash"] = send(
