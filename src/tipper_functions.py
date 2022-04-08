@@ -165,9 +165,9 @@ def check_registered_by_address(address):
             return acct.address
         except Account.DoesNotExist:
             pass
-    elif shared.CURRENCY == "Banano":
+    elif shared.CURRENCY == "Ananos":
         try:
-            acct = Account.get(address=f"ban_{address}")
+            acct = Account.get(address=f"ana_{address}")
             return acct.address
         except Account.DoesNotExist:
             pass

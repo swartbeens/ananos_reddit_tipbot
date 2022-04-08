@@ -100,6 +100,9 @@ def send_from_comment(message):
         parsed_text[-2] in TIP_COMMANDS
     ):
         parsed_text = parsed_text[-2:]
+     # save comment as tip note if tip command came first
+    tip_note = ' '.join(parsed_text[2:])
+    tip_note = '\n\n' + str(message.author) + " included the following tip note: " + tip_note if tip_note else ""
 
     # before we can do anything, check the subreddit status for generating the response
     response["subreddit"] = str(message.subreddit).lower()
@@ -178,7 +181,7 @@ def send_from_comment(message):
         response["status"] = 200
         return response
 
-    # send the bans!!
+    # send the ananos!!
     response["hash"] = send(
         sender_info["address"],
         response["amount"],
@@ -198,7 +201,7 @@ def send_from_comment(message):
     ).where(History.id == entry_id).execute()
     
     LOGGER.info(
-        f"Sending Banano: {sender_info['address']} {sender_info['private_key']} {response['amount']} {recipient_info['address']} {recipient_info['username']}"
+        f"Sending Ananos: {sender_info['address']} {sender_info['private_key']} {response['amount']} {recipient_info['address']} {recipient_info['username']}"
     )
 
     if response["status"] == 20:
@@ -210,6 +213,7 @@ def send_from_comment(message):
                 recipient_info["address"],
                 recipient_info["address"],
             )
+            + tip_note
             + text.COMMENT_FOOTER
         )
         send_pm(recipient_info["username"], subject, message_text)
@@ -226,6 +230,7 @@ def send_from_comment(message):
                     from_raw(receiving_new_balance),
                     response["hash"],
                 )
+                + tip_note
                 + text.COMMENT_FOOTER
             )
             send_pm(recipient_info["username"], subject, message_text)
