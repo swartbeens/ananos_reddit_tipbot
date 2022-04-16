@@ -57,13 +57,13 @@ There are also PM commands by [messaging](https://reddit.com/message/compose/?to
 ```balance``` Check your account balance.\n\n
 ```help``` Receive an in-depth help message.\n\n
 
-View your account on [the block explorer](https://creeper.Ananos.cc/explorer/account/%s).\n\n
+View your account on [the block explorer](https://ananault.lightcord.org/account/%s).\n\n
 If you have any questions, please post at /r/ana_tipbot
 """
 
 WELCOME_TIP = """
 Welcome to Ananos Tipper, a reddit tip bot which allows you to tip and send the [Ananos](https://Ananos.cc) Currency to your favorite redditors! 
-You have just received a Ananos tip in the amount of ```%s BAN``` at your address `%s`.\n\n
+You have just received a Ananos tip in the amount of ```%s ANA``` at your address `%s`.\n\n
 By using this service, you agree to the [Terms of Service](https://github.com/swartbeens/ananos_reddit_tipbot#terms-of-service).\n\n
 
 If you do not accept the Terms of Service, or do not with to participate, please respond with the text `opt-out`.\n\n
@@ -82,14 +82,14 @@ There are also PM commands by [messaging](https://reddit.com/message/compose/?to
 ```balance``` Check your account balance.\n\n
 ```help``` Receive an in-depth help message.\n\n
 
-View your account on the block explorer: https://creeper.Ananos.cc/explorer/account/%s\n\n
+View your account on the block explorer: https://ananault.lightcord.org/account/%s\n\n
 If you have any questions, please post at /r/ana_tipbot
 """
 
 NEW_TIP = """
-Somebody just tipped you %s BAN at your address `%s`. Your new juicy account balance is:\n\n
+Somebody just tipped you %s ANA at your address `%s`. Your new juicy account balance is:\n\n
 **%s Ananos**\n\n
-[View this transaction on Creeper](https://creeper.Ananos.cc/explorer/block/%s)\n\n
+[View this transaction on Creeper](https://ananault.lightcord.org/transaction/%s)\n\n
 To turn off these notifications, reply with "silence yes".
 """
 
@@ -127,20 +127,16 @@ TIP_CREATE_ACCT_ERROR = "I failed to create an account for your intended recipie
 # full responses
 SEND_TEXT = {
     10: (
-        "Sent ```%s BAN``` to /u/%s\n\n[View this transaction on Creeper](https://creep"
-        "er.Ananos.cc/explorer/block/%s)"
+        "Sent ```%s ANA``` to /u/%s\n\n[View this transaction on Creeper](https://ananault.lightcord.org/transaction/%s)"
     ),
     11: (
-        "Sent ```%s BAN``` to %s\n\n[View this transaction on Creeper](https://creep"
-        "er.Ananos.cc/explorer/block/%s)"
+        "Sent ```%s ANA``` to %s\n\n[View this transaction on Creeper](https://ananault.lightcord.org/transaction/%s)"
     ),
     20: (
         "Creating a new account for /u/%s and "
-        "sending ```%s BAN```.\n\n[View this transaction on Creeper](https://creeper.Ananos.cc"
-        "/explorer/block/%s)"
+        "sending ```%s ANA```.\n\n[View this transaction on Creeper](https://ananault.lightcord.org/transaction/%s)"
     ),
-    30: "Sent ```%s BAN``` to address `%s`\n\n[View this transaction on Creeper](https://creep"
-    "er.Ananos.cc/explorer/block/%s)",
+    30: "Sent ```%s ANA``` to address `%s`\n\n[View this transaction on Creeper](https://ananault.lightcord.org/transaction/%s)",
     100: (
         "You don't have an account yet. Please PM me with `create` in the body to "
         "make an account."
@@ -163,15 +159,15 @@ SEND_TEXT = {
 # for subreddits who like minimal response, or 2nd level responses
 SEND_TEXT_MIN = {
     10: (
-        "^[Sent](https://creeper.Ananos.cc/explorer/block/%s) ^%s ^BAN ^to ^(/u/%s) ^- "
+        "^[Sent](https://ananault.lightcord.org/transaction/%s) ^%s ^ANA ^to ^(/u/%s) ^- "
         "[^(Ananos Tipper)](https://github.com/swartbeens/ananos_reddit_tipbot)"
     ),
     11: (
-        "^[Sent](https://creeper.Ananos.cc/explorer/block/%s) ^%s ^BAN ^to ^%s ^- [^(Bana"
+        "^[Sent](https://ananault.lightcord.org/transaction/%s) ^%s ^ANA ^to ^%s ^- [^(Bana"
         "no Tipper)](https://github.com/swartbeens/ananos_reddit_tipbot)"
     ),
     20: (
-        "^(Made a new account and )^[sent](https://creeper.Ananos.cc/explorer/block/%s) ^%s ^BAN ^to ^(/u/%s) ^- [^(Bana"
+        "^(Made a new account and )^[sent](https://ananault.lightcord.org/transaction/%s) ^%s ^ANA ^to ^(/u/%s) ^- [^(Bana"
         "no Tipper)](https://github.com/swartbeens/ananos_reddit_tipbot)"
     ),
     100: (
@@ -219,13 +215,13 @@ NOT_OPEN = (
 ALREADY_EXISTS = (
     "It looks like you already have an account. In any case it is now "
     "**active**. Your Ananos address is `%s`."
-    "\n\nhttps://creeper.Ananos.cc/explorer/account/%s"
+    "\n\https://ananault.lightcord.org/account/%s"
 )
 
 BALANCE = (
     "Your balance at address `%s` is:\n\n"
     "**%s Ananos**"
-    "\n\nhttps://creeper.Ananos.cc/explorer/account/%s"
+    "\n\nhttps://ananault.lightcord.org/account/%s"
 )
 
 
