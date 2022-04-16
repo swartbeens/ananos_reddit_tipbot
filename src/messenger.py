@@ -1,8 +1,10 @@
 from time import sleep
-from shared import REDDIT, LOGGER, Message
+from shared import REDDIT, LOGGER, Message, should_stop
 
 LOGGER.info("Starting messenger")
 while True:
+    if should_stop():
+        exit(0)    
     results = Message.select()
     for result in results:
         LOGGER.info("%s %s %s" % (result.username, result.subject, repr(result.message)[:50]))

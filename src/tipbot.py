@@ -3,7 +3,7 @@ import time
 from time import sleep
 
 import shared
-from shared import REDDIT, PROGRAM_MINIMUM, SUBREDDITS, to_raw, LOGGER
+from shared import REDDIT, PROGRAM_MINIMUM, SUBREDDITS, to_raw, LOGGER, should_stop
 
 from message_functions import handle_message
 
@@ -34,6 +34,9 @@ def stream_comments_messages():
         except ValueError:
             pass
         previous_time = time.time()
+
+        if should_stop():
+            exit(0)        
 
         # check for new comments
         updated_comments = {comment for comment in SUBREDDITS.comments()}

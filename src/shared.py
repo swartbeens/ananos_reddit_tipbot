@@ -122,6 +122,12 @@ elif CURRENCY == "Ananos":
     def from_raw(amount):
         return amount / (10 ** 29)
 
+# Checks if the scripts should stop, based on the presence of a file.
+def should_stop():
+    if os.path.isfile("./stop"):
+        return True
+    return False
+
 # Base Model
 class BaseModel(Model):
 	class Meta:
@@ -186,6 +192,7 @@ def get_subreddits():
         sub = Subreddit(
             subreddit = MAIN_SUB,
             reply_to_comments = True,
+            footer = "",
             status = "full",
             minimum = PROGRAM_MINIMUM
         )

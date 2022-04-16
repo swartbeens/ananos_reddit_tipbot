@@ -24,7 +24,7 @@ You can tip any amount above the program minimum of 1 Ananos.\n\n
 
 For PM commands, create a new message with any of the following commands (be sure to remove the quotes, '<'s and '>'s):\n
     'create' - Create a new account if one does not exist
-    'send <amount or all> <user/address>' - Send Nano to a reddit user or an address
+    'send <amount or all> <user/address>' - Send Ananos to a reddit user or an address
     'balance' or 'address' - Retrieve your account balance.
     'silence <yes/no>' - (default 'no') Prevents the bot from sending you tip notifications or tagging in posts 
     'history <optional: number of records>' - Retrieves tipbot commands. Default 10, maximum is 50.
@@ -33,7 +33,7 @@ For PM commands, create a new message with any of the following commands (be sur
     'help' - Get this help message\n
 If you wanted to send 1.2 Ananos to rambamtyfus, reply:\n
     send 1.1 rambamtyfus\n
-If you have any questions or bug fixes, please reach out on the [Ananos subreddit](https://reddit.com/r/Ananos) or the [Ananos Discord](https://chat.Ananos.cc)."""
+If you have any questions or bug fixes, please reach out on the [Ananos subreddit](https://reddit.com/r/Ananos)."""
 
 WELCOME_CREATE = """
 Welcome to Ananos Tipper, a reddit tip bot which allows you to tip and send the [Ananos](https://Ananos.cc) Currency to your favorite redditors! 
