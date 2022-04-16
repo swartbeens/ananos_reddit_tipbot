@@ -11,8 +11,8 @@ from shared import (
     Validators
 )
 
-if CURRENCY == "Banano":
-    nanopy.account_prefix = 'ban_'
+if CURRENCY == "Ananos":
+    nanopy.account_prefix = 'ana_'
     nanopy.standard_exponent = 29
 else:
     nanopy.account_prefix = 'nano_'

@@ -219,12 +219,9 @@ def handle_history(message):
                 amount = result.amount
                 if (result.action == "send") and amount:
                     amount = from_raw(int(result.amount))
-                    if (
-                        result.notes == "sent to registered redditor"
-                        or result.notes == "new user created"
-                    ):
+                    if result.notes == "sent to user":
                         response += (
-                            "%s: %s | %s Banano to %s | reddit object: %s | %s\n\n"
+                            "%s: %s | %s Ananos to %s | reddit object: %s | %s\n\n"
                             % (
                                 result.reddit_time.strftime("%Y-%m-%d %H:%M:%S"),
                                 result.action,
@@ -234,12 +231,9 @@ def handle_history(message):
                                 result.notes,
                             )
                         )
-                    elif (
-                        result.notes == "sent to registered address"
-                        or result.notes == "sent to unregistered address"
-                    ):
+                    elif result.notes == "sent to address":
                         response += (
-                            "%s: %s | %s Banano to %s | reddit object: %s | %s\n\n"
+                            "%s: %s | %s Ananos to %s | reddit object: %s | %s\n\n"
                             % (
                                 result.reddit_time.strftime("%Y-%m-%d %H:%M:%S"),
                                 result.action,
@@ -409,6 +403,12 @@ def handle_send(message):
         response["status"] = 110
         return response
 
+    # Check for too many arguments
+    if len(parsed_text) >= 4: 
+        update_history_notes(entry_id, "too many arguments")
+        response["status"] = 111
+        return response   
+
     # pull sender account info
     sender_info = tipper_functions.account_info(response["username"])
     if not sender_info:
@@ -487,7 +487,7 @@ def handle_send(message):
         History.update(notes="send to address", address=sender_info["address"], username=sender_info["username"], recipient_username=None, recipient_address=recipient_info["address"],
                     amount=str(response["amount"]), return_status="cleared").where(History.id == entry_id).execute()
         LOGGER.info(
-            f"Sending Banano: {sender_info['address']} {sender_info['private_key']} {response['amount']} {recipient_info['address']}"
+            f"Sending Ananos: {sender_info['address']} {sender_info['private_key']} {response['amount']} {recipient_info['address']}"
         )
         return response
 
@@ -495,7 +495,7 @@ def handle_send(message):
     History.update(notes="send to address", address=sender_info["address"], username=sender_info["username"], recipient_username=recipient_info["username"], recipient_address=recipient_info["address"],
                 amount=str(response["amount"]), return_status="cleared").where(History.id == entry_id).execute()
     LOGGER.info(
-        f"Sending Banano: {sender_info['address']} {sender_info['private_key']} {response['amount']} {recipient_info['address']} {recipient_info['username']}"
+        f"Sending Ananos: {sender_info['address']} {sender_info['private_key']} {response['amount']} {recipient_info['address']} {recipient_info['username']}"
     )
 
     if response["status"] == 20:
@@ -558,7 +558,7 @@ def handle_opt_in(message):
 
 def parse_recipient_username(recipient_text):
     """
-    Determines if a specified recipient is a banano address or a redditor
+    Determines if a specified recipient is an Ananos address or a redditor
     :param recipient_text:
     :return: either {address: valid_address} or {username: user}
     """
@@ -568,7 +568,7 @@ def parse_recipient_username(recipient_text):
     elif recipient_text[:2].lower() == "u/":
         recipient_text = recipient_text[2:]
 
-    if (shared.CURRENCY == "Nano" and (recipient_text[:5].lower() == "nano_" or recipient_text[:4].lower() == "xrb_")) or (shared.CURRENCY == "Banano" and recipient_text[:4].lower() == "ban_"):
+    if (shared.CURRENCY == "Nano" and (recipient_text[:5].lower() == "nano_" or recipient_text[:4].lower() == "xrb_")) or (shared.CURRENCY == "Ananos" and recipient_text[:4].lower() == "ana_"):
         # check valid address
         success = validate_address(recipient_text)
         if success:

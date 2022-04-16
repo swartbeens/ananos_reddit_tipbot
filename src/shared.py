@@ -13,9 +13,9 @@ from bitstring import BitArray
 from hashlib import blake2b
 
 from peewee import *
-from playhouse.pool  import PooledPostgresqlExtDatabase
+from playhouse.pool  import PooledMySQLDatabase
 
-LOGGER = logging.getLogger("banano-reddit-tipbot")
+LOGGER = logging.getLogger("ananos-reddit-tipbot")
 LOGGER.setLevel(logging.INFO)
 handler = logging.StreamHandler(sys.stdout)
 formatter = logging.Formatter("%(asctime)s;%(levelname)s;%(message)s", "%Y-%m-%d %H:%M:%S %z")
@@ -34,6 +34,7 @@ try:
     PROGRAM_MINIMUM = float(config["BOT"]["program_minimum"])
     TIP_COMMANDS = config["BOT"]["tip_commands"].split(",")
     TIPBOT_OWNER = config["BOT"]["tipbot_owner"]
+    MAIN_SUB = config["BOT"]["main_sub"]
     PYTHON_COMMAND = config["BOT"]["python_command"]
     TIPPER_OPTIONS = config["BOT"]["tipper_options"]
     MESSENGER_OPTIONS = config["BOT"]["messenger_options"]
@@ -54,8 +55,8 @@ except KeyError as e:
     SQL_PASSWORD = ""
     DATABASE_NAME = ""
     TIP_BOT_ON = True
-    TIP_BOT_USERNAME = "banano_reddit_tipbot"
-    PROGRAM_MINIMUM = 0.01
+    TIP_BOT_USERNAME = "ana_tipbot"
+    PROGRAM_MINIMUM = 1
     TIP_COMMANDS = ["!ntipz", "!nano_tipz"]
     TIPBOT_OWNER = "bbedward"
     DEFAULT_URL = ""
@@ -71,7 +72,7 @@ if USE_SQLITE:
     PROJECT_ROOT = os.path.abspath(os.path.join(APP_DIR, os.pardir))
     db = SqliteDatabase(os.path.join(PROJECT_ROOT, 'tip.db'))
 else:
-    db = PooledPostgresqlExtDatabase(DATABASE_NAME, user=DATABASE_USER, password=DATABASE_PASSWORD, host=DATABASE_HOST, port=5432, max_connections=4)
+    db = PooledMySQLDatabase(DATABASE_NAME, user=DATABASE_USER, password=DATABASE_PASSWORD, host=DATABASE_HOST, port=3306, max_connections=4)
 
 try:
     REDDIT = praw.Reddit("bot1")
@@ -88,21 +89,11 @@ class RandomUtil(object):
 
 class NumberUtil(object):
     @classmethod
-    def truncate_digits(cls, in_number: float, max_digits: int) -> float:
-        """Restrict maximum decimal digits by removing them"""
-        getcontext().prec = max_digits
-        working_num = int(Decimal(str(in_number)) * Decimal(Decimal("10") ** Decimal(str(max_digits))))
-        return working_num / (10 ** max_digits)
-
-
-    @classmethod
     def format_float(cls, in_number: float) -> str:
         """Format a float with un-necessary chars removed. E.g: 1.0000 == 1"""
         if CURRENCY == "Nano":
-            in_number = cls.truncate_digits(in_number, 6)
             as_str = f"{in_number:.6f}".rstrip('0')
         else:
-            in_number = cls.truncate_digits(in_number, 2)
             as_str = f"{in_number:.2f}".rstrip('0')            
         if as_str[len(as_str) - 1] == '.':
             as_str = as_str.replace('.', '')
@@ -116,7 +107,7 @@ if CURRENCY == "Nano":
     def from_raw(amount):
         return amount / 10 ** 30
 
-elif CURRENCY == "Banano":
+elif CURRENCY == "Ananos":
 
     def to_raw(amount):
         ban_amt = float(amount)
@@ -130,6 +121,12 @@ elif CURRENCY == "Banano":
 
     def from_raw(amount):
         return amount / (10 ** 29)
+
+# Checks if the scripts should stop, based on the presence of a file.
+def should_stop():
+    if os.path.isfile("./stop"):
+        return True
+    return False
 
 # Base Model
 class BaseModel(Model):
@@ -192,7 +189,16 @@ def get_subreddits():
     results = Subreddit.select()
     subreddits = [subreddit for subreddit in results]
     if len(subreddits) == 0:
-        return None
+        sub = Subreddit(
+            subreddit = MAIN_SUB,
+            reply_to_comments = True,
+            footer = "",
+            status = "full",
+            minimum = PROGRAM_MINIMUM
+        )
+        sub.save()
+        results = Subreddit.select()
+        subreddits = [subreddit for subreddit in results]    
     subreddits_str = "+".join(result.subreddit for result in subreddits)
     return REDDIT.subreddit(subreddits_str)
 
@@ -223,8 +229,8 @@ class Validators():
 
     @staticmethod
     def validate_checksum_xrb(address: str) -> bool:
-        """Given an xrb/nano/ban address validate the checksum"""
-        if (CURRENCY == "Nano" and ((address[:5] == 'nano_' and len(address) == 65) or (address[:4] == 'xrb_' and len(address) == 64))) or (CURRENCY == "Banano" and (address[:4] == 'ban_'  and len(address) == 64)):
+        """Given an xrb/nano/ananos address validate the checksum"""
+        if (CURRENCY == "Nano" and ((address[:5] == 'nano_' and len(address) == 65) or (address[:4] == 'xrb_' and len(address) == 64))) or (CURRENCY == "Ananos" and (address[:4] == 'ana_'  and len(address) == 64)):
             # Populate 32-char account index
             account_map = "13456789abcdefghijkmnopqrstuwxyz"
             account_lookup = {}

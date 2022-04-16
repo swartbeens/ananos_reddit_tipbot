@@ -7,7 +7,7 @@ def add_subreddit(
     subreddit,
     reply_to_comments=True,
     footer="",
-    status="friendly",
+    status="full",
     minimum=PROGRAM_MINIMUM,
 ):
     sub = Subreddit(
@@ -15,13 +15,13 @@ def add_subreddit(
         reply_to_comments=reply_to_comments,
         footer=footer,
         status=status,
-        minimum=PROGRAM_MINIMUM
+        minimum=minimum
     )
     sub.save(force_insert=True)
 
 @db.connection_context()
 def modify_subreddit(subreddit, status):
-    Subreddit.update(status=status).where(Subredit.subreddit == subreddit).execute()
+    Subreddit.update(status=status).where(Subreddit.subreddit == subreddit).execute()
 
 @db.connection_context()
 def rm_subreddit(subreddit):
