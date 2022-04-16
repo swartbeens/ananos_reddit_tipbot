@@ -186,6 +186,8 @@ def send_from_comment(message):
         return response
 
 
+    receiving_new_balance = check_balance(recipient_info["address"]) + response["amount"]
+
     # send the ananos!!
     response["hash"] = send(
         sender_info["address"],
@@ -225,7 +227,7 @@ def send_from_comment(message):
         return response
     else:
         if not recipient_info["silence"]:
-            receiving_new_balance = check_balance(recipient_info["address"])
+            
             subject = text.SUBJECTS["new_tip"]
             message_text = (
                 text.NEW_TIP

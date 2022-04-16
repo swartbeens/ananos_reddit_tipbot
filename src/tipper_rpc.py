@@ -13,7 +13,7 @@ from shared import (
 
 if CURRENCY == "Ananos":
     nanopy.account_prefix = 'ana_'
-    nanopy.standard_exponent = 29
+    nanopy.standard_exponent = 28
 else:
     nanopy.account_prefix = 'nano_'
 

@@ -89,7 +89,7 @@ If you have any questions, please post at /r/ana_tipbot
 NEW_TIP = """
 Somebody just tipped you %s ANA at your address `%s`. Your new juicy account balance is:\n\n
 **%s Ananos**\n\n
-[View this transaction on Creeper](https://ananault.lightcord.org/transaction/%s)\n\n
+[View this transaction](https://ananault.lightcord.org/transaction/%s)\n\n
 To turn off these notifications, reply with "silence yes".
 """
 
@@ -127,16 +127,16 @@ TIP_CREATE_ACCT_ERROR = "I failed to create an account for your intended recipie
 # full responses
 SEND_TEXT = {
     10: (
-        "Sent ```%s ANA``` to /u/%s\n\n[View this transaction on Creeper](https://ananault.lightcord.org/transaction/%s)"
+        "Sent ```%s ANA``` to /u/%s\n\n[View this transaction](https://ananault.lightcord.org/transaction/%s)"
     ),
     11: (
-        "Sent ```%s ANA``` to %s\n\n[View this transaction on Creeper](https://ananault.lightcord.org/transaction/%s)"
+        "Sent ```%s ANA``` to %s\n\n[View this transaction](https://ananault.lightcord.org/transaction/%s)"
     ),
     20: (
         "Creating a new account for /u/%s and "
-        "sending ```%s ANA```.\n\n[View this transaction on Creeper](https://ananault.lightcord.org/transaction/%s)"
+        "sending ```%s ANA```.\n\n[View this transaction](https://ananault.lightcord.org/transaction/%s)"
     ),
-    30: "Sent ```%s ANA``` to address `%s`\n\n[View this transaction on Creeper](https://ananault.lightcord.org/transaction/%s)",
+    30: "Sent ```%s ANA``` to address `%s`\n\n[View this transaction](https://ananault.lightcord.org/transaction/%s)",
     100: (
         "You don't have an account yet. Please PM me with `create` in the body to "
         "make an account."
@@ -215,11 +215,11 @@ NOT_OPEN = (
 ALREADY_EXISTS = (
     "It looks like you already have an account. In any case it is now "
     "**active**. Your Ananos address is `%s`."
-    "\n\https://ananault.lightcord.org/account/%s"
+    "\n\nhttps://ananault.lightcord.org/account/%s"
 )
 
 BALANCE = (
-    "Your balance at address `%s` is:\n\n"
+    "Your juicy balance at address `%s` is:\n\n"
     "**%s Ananos**"
     "\n\nhttps://ananault.lightcord.org/account/%s"
 )

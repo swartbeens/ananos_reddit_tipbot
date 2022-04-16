@@ -117,10 +117,10 @@ elif CURRENCY == "Ananos":
             asStr[1] = asStr[1][:2]
         asStr[1] = asStr[1].ljust(2, '0')
         banoshiAmount = int(asStr[1])
-        return (banAmount * (10**29)) + (banoshiAmount * (10 ** 27))
+        return (banAmount * (10**28)) + (banoshiAmount * (10 ** 27))
 
     def from_raw(amount):
-        return amount / (10 ** 29)
+        return amount / (10 ** 28)
 
 # Checks if the scripts should stop, based on the presence of a file.
 def should_stop():
