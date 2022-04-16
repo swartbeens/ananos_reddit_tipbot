@@ -86,11 +86,23 @@ To deactivate, simply PM
 [Kalium](https://ananault.lightcord.org/ -- The Ananos wallet
 
 # Terms of Service
-* Don't keep a lot of Ananos in your Tip Bot account!
-* You accept the risks of using this Tip Bot--We won't steal your Ananoss, but they might be lost at any point, and we are at no obligation to replace them. Don't put in more than you're willing to lose.
-* If your account is inactive for more than 3 years, and no meaningful attempt has been made to reach me, the Ananos in your account are subject to be forfeited and we are under no obligation to return them. The tip bot is not a lifelong custodial service.
-* Don't submit more than 5 requests every 30 seconds. The bot will ignore any commands you issue until 30 seconds have passed.
-* I can change the Terms of Service at any time.
+* Do not keep a lot of Ananos in your tip bot account! The tip bot is for tipping small amounts ONLY.
+
+  
+
+* You accept the risks of using this tip bot -- We won't steal your Ananos, but they might be lost at any point, and we are at no obligation to replace them. Don't put in more than you're willing to lose.
+
+  
+
+* We are under no obligation to provide support. The tip bot is not a custodial service.
+
+  
+
+* Any consequences of tipping are the responsibility of the users using this service.
+
+ 
+ 
+* This software is provided "as is" and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. In no event shall the copyright holder or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage.
 
 # FAQ
 ## Why does the message have to start or end with !ana <amount>?
