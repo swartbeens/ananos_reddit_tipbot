@@ -1,12 +1,12 @@
 # Ananos Reddit Tipbot
  is a reddit tipping service to easily give Ananos to your favorite redditors! [Ananos](https://Ananos.express) is a feeless, instant, rich in potassium cryptocurrency. Before using Ananos Tipper, please take a look at the [Terms of Service](https://github.com/swartbeens/ananos_reddit_tipbot#terms-of-service)
 
-It is a fork and modification of the [Banano](https://banano.cc/) reddit tipbot created by /u/bbedward - which is available on [GitHub](https://github.com/BananoCoin/banano_reddit_tipbot)
+It is a fork and modification of the [Banano](https://banano.cc/) reddit tipbot created by /u/bbedward - which is available on [GitHub](https://github.com/BananoCoin/banano_reddit_tipbot).
 
 ### To get started with Ananos Tipper, either:
-A) **Create an account** by [sending a message](https://reddit.com/message/compose/?to=ana_tipbot&subject=command&message=create) to /u/ana_tipbot with 'create' or 'register' in the message body. You will receive a Ananos address, to which you can add Ananos\*.
+A) **Create an account** by [sending a message](https://reddit.com/message/compose/?to=ana_tipbot&subject=command&message=create) to /u/ana_tipbot with 'create' or 'register' in the message body. You will receive an Ananos address, to which you can add Ananos\*.
 \-or-
-B) **Receive a Ananos tip** from a fellow redditor, and you will automatically have an account made! be sure to activate it afterwards by [sending a message](https://reddit.com/message/compose/?to=ana_tipbot&subject=command&message=create) to /u/ana_tipbot.
+B) **Receive an Ananos tip** from a fellow redditor, and you will automatically have an account made! be sure to activate it afterwards by [sending a message](https://reddit.com/message/compose/?to=ana_tipbot&subject=command&message=create) to /u/ana_tipbot.
 Once you have funds in your account, you can tip other redditors, or send to any Ananos address via PM to /u/ana_tipbot.
 # Comment Replies:
 Ananos Tipper is intended for tipping on reddit posts and replies.
@@ -101,7 +101,7 @@ To deactivate, simply PM
 * Any consequences of tipping are the responsibility of the users using this service.
 
  
- 
+
 * This software is provided "as is" and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. In no event shall the copyright holder or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage.
 
 # FAQ
