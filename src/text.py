@@ -220,7 +220,7 @@ ALREADY_EXISTS = (
 
 BALANCE = (
     "Your juicy balance at address `%s` is:\n\n"
-    "**%s Ananos**"
+    "**%s DAG Ananos**"
     "\n\nhttps://ananault.lightcord.org/account/%s"
 )
 
