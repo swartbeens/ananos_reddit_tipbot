@@ -185,8 +185,9 @@ def send_from_comment(message):
         response["status"] = 200
         return response
 
+    if response["status"] != 20: # not a new account
+        receiving_new_balance = check_balance(recipient_info["address"]) + response["amount"]
 
-    receiving_new_balance = check_balance(recipient_info["address"]) + response["amount"]
 
     # send the ananos!!
     response["hash"] = send(
