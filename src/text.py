@@ -163,12 +163,12 @@ SEND_TEXT_MIN = {
         "[^(Ananos Tipper)](https://github.com/swartbeens/ananos_reddit_tipbot)"
     ),
     11: (
-        "^[Sent](https://ananault.lightcord.org/transaction/%s) ^%s ^ANA ^to ^%s ^- [^(Bana"
-        "no Tipper)](https://github.com/swartbeens/ananos_reddit_tipbot)"
+        "^[Sent](https://ananault.lightcord.org/transaction/%s) ^%s ^ANA ^to ^%s ^- [^(Ana"
+        "nos Tipper)](https://github.com/swartbeens/ananos_reddit_tipbot)"
     ),
     20: (
-        "^(Made a new account and )^[sent](https://ananault.lightcord.org/transaction/%s) ^%s ^ANA ^to ^(/u/%s) ^- [^(Bana"
-        "no Tipper)](https://github.com/swartbeens/ananos_reddit_tipbot)"
+        "^(Made a new account and )^[sent](https://ananault.lightcord.org/transaction/%s) ^%s ^ANA ^to ^(/u/%s) ^- [^(Ana"
+        "nos Tipper)](https://github.com/swartbeens/ananos_reddit_tipbot)"
     ),
     100: (
         "^(Tip not sent. Error code )^[%s](https://github.com/swartbeens/ananos_reddit_tipbot"
